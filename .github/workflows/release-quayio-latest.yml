@@ -19,6 +19,7 @@ jobs:
       registry: quay.io
       repo: droposhado/sabedoria
       tag: latest
+      push: true
     secrets:
       username: ${{ secrets.USERNAME }}
       password: ${{ secrets.PASSWORD }}
