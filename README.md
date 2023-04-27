@@ -166,7 +166,7 @@ curl -H "Authorization: Bearer aawesometoken" \
      http://localhost:5000/v1/education
 ```
 
-### API docs
+## API docs
 
 - [openapi.yml](openapi.yml)
 - [swagger](https://editor-next.swagger.io/?url=https://raw.githubusercontent.com/droposhado/sabedoria/main/openapi.yml)
