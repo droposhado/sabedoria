@@ -2,7 +2,7 @@ openapi: 3.0.3
 info:
   title: Sabedoria API
   description: |-
-    Muitos tipos e itens utilizados aqui, são apenas colocados como string e não como valores armazenados, pois dependem do que o usuário dono da instancia cadastrou
+    Many types and items used here are just placed as a string and not as stored values, as they depend on what the user who owns the instance has registered.
 
     Some useful links:
     - [droposhado/sabedoria](https://github.com/droposhado/sabedoria)
