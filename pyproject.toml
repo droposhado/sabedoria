@@ -1,0 +1,105 @@
+[build-system]
+build-backend = "setuptools.build_meta"
+requires = [
+    "setuptools ~=63.2.0",
+    "wheel ~=0.37.1",
+]
+
+[project]
+name = "sabedoria"
+authors = [
+    {name = "Flaverton Rodrigues Rosa", email = "contact@droposhado.org"},
+]
+description = ""
+readme = "README.md"
+requires-python = ">=3.10"
+
+dynamic = ["dependencies", "optional-dependencies", "version"]
+
+[project.license]
+file = "LICENSE"
+
+[project.urls]
+"Source Code" = "https://github.com/droposhado/sabedoria"
+"homepage" = "https://github.com/droposhado/sabedoria"
+
+[tool.setuptools.dynamic.dependencies]
+file = ["requirements.txt"]
+
+[tool.setuptools.dynamic.optional-dependencies.dev]
+file = ["requirements-dev.txt"]
+
+[tool.setuptools.dynamic.version]
+attr = "sabedoria.__version__"
+
+[tool.isort]
+profile = "black"
+src_paths = ["sabedoria"]
+
+[tool.pylint.main]
+ignore = [
+    "CVS",
+    "config.py",
+    "gunicorn.py"
+]
+
+[tool.pylint.format]
+max-line-length = 88
+
+[tool.pylint."messages control"]
+# Dev state not use module docstring to rapid rework
+disable = [
+    "missing-module-docstring"
+]
+
+[tool.bandit]
+exclude_dirs = ["tests",".git", "__pycache__"]
+
+[tool.ruff]
+line-length = 88
+show-fixes = true
+select = [
+    "F",  # pyflakes
+    "E",  # pycodestyle errors
+    "W",  # pycodestyle warnings
+    "C",  # flake8-comprehensions
+    "B",  # flake8-bugbear
+    "Q"
+]
+
+[tool.ruff.per-file-ignores]
+"sabedoria/gunicorn.py" = ["E501"]
+
+[tool.liccheck]
+authorized_licenses = [
+    "bsd",
+    "new bsd",
+    "bsd license",
+    "new bsd license",
+    "simplified bsd",
+    "apache",
+    "apache 2.0",
+    "Apache License 2.0",
+    "Apache Software",
+    "apache software license",
+    "isc license",
+    "isc license (iscl)",
+    "mit",
+    "mit license",
+    "python software foundation license",
+    "Mozilla Public License 2.0 (MPL 2.0)"
+]
+
+unauthorized_licenses = [
+    "gnu lgpl",
+    "gpl v3",
+    "lgpl",
+    "lgpl with exceptions",
+    "lgpl with exceptions or zpl",
+    "zpl",
+    "zpl 2.1",
+    "zope public",
+    "zope public license",
+    "GNU Library or Lesser General Public License (LGPL)",
+    "unknown"
+]

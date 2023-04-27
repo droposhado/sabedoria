@@ -1,0 +1,12 @@
+Dockerfile
+docker-compose.yml
+.dockerignore
+docs
+.git
+.github
+.gitignore
+Makefile
+openapi.yml
+README.md
+scripts
+tests

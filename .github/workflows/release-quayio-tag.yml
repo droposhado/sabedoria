@@ -1,0 +1,36 @@
+name: release quayio tag
+on:
+  push:
+    tags:
+      - '*'
+
+  workflow_dispatch:
+
+jobs:
+  python-best-pratices:
+    uses: droposhado/workflows/.github/workflows/python-best-practices.yml@main
+    with:
+      python_version: "3.10"
+
+  extraction:
+    runs-on: ubuntu-latest
+    outputs:
+      tag: ${{ steps.tag.outputs.tag }}
+    steps:
+      - name: Extract tag
+        uses: ncipollo/semantic-version-action@v1
+        id: tag
+
+  build-push:
+    needs:
+      - python-best-pratices
+      - extraction
+    uses: droposhado/workflows/.github/workflows/docker-build-push.yml@main
+    with:
+      registry: quay.io
+      repo: droposhado/sabedoria
+      tag: ${{ needs.extraction.outputs.tag }}
+      push: true
+    secrets:
+      username: ${{ secrets.USERNAME }}
+      password: ${{ secrets.PASSWORD }}

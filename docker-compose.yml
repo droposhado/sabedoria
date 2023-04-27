@@ -1,0 +1,23 @@
+version: '3.3'
+
+services:
+  sabedoria:
+    build: .
+    environment:
+      LANGS: "en-US,pt-BR"
+      TOKEN: awesometokenbutchangeit
+      BASEROW_TOKEN: awesomebaserowtokengenerated
+      BASEROW_URL: "https://api.baserow.io"
+      COURSE_TABLE_ID: 999999
+      JOB_TABLE_ID: 999999
+      PROJECT_TABLE_ID: 999999
+      EDUCATION_TABLE_ID: 999999
+      INTEREST_TABLE_ID: 999999
+      DESCRIPTION_TABLE_ID: 999999
+      NAME: Sabio
+      GITHUB: sabio
+      LINKEDIN: sabio
+      EMAIL: example@example.com
+      SITE: example.com
+    ports:
+      - 5000:5000

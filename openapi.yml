@@ -1,0 +1,444 @@
+openapi: 3.0.3
+info:
+  title: Sabedoria API
+  description: |-
+    Muitos tipos e itens utilizados aqui, são apenas colocados como string e não como valores armazenados, pois dependem do que o usuário dono da instancia cadastrou
+
+    Some useful links:
+    - [droposhado/sabedoria](https://github.com/droposhado/sabedoria)
+    - [openapi.yml](https://github.com/droposhado/sabedoria/blob/main/openapi.yml)
+
+  license:
+    name: MIT
+  version: 0.0.1
+servers:
+  - url: https://i.am.droposhado.org/v1/
+paths:
+  /:
+    get:
+      summary: 
+      description: lopen ipsum
+      operationId: root
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept-Language
+          in: header
+          description: ''
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/All'
+        '401':
+          description: Don't have access to the resource
+          content:
+            application/json:
+              schema:
+                 $ref: '#/components/schemas/Error'
+        '406':
+          description: Need a valid language
+          content:
+            application/json:
+              schema:
+                 $ref: '#/components/schemas/Error'
+  /course:
+    get:
+      summary: Finds Pets by tags
+      description: lopen ipsum
+      operationId: course
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept-Language
+          in: header
+          description: ''
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Course'
+        '401':
+          description: Don't have access to the resource
+          content:
+            application/json:
+              schema:
+                 $ref: '#/components/schemas/Error'
+        '406':
+          description: Need a valid language
+          content:
+            application/json:
+              schema:
+                 $ref: '#/components/schemas/Error'
+  /education:
+    get:
+      summary: Finds Pets by tags
+      description: lopen ipsum
+      operationId: education
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept-Language
+          in: header
+          description: ''
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Education'
+        '401':
+          description: Don't have access to the resource
+          content:
+            application/json:
+              schema:
+                 $ref: '#/components/schemas/Error'
+        '406':
+          description: Need a valid language
+          content:
+            application/json:
+              schema:
+                 $ref: '#/components/schemas/Error'
+  /interest:
+    get:
+      summary: Finds Pets by tags
+      description: lopen ipsum
+      operationId: interest
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept-Language
+          in: header
+          description: ''
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: string     
+        '401':
+          description: Don't have access to the resource
+          content:
+            application/json:
+              schema:
+                 $ref: '#/components/schemas/Error'
+        '406':
+          description: Need a valid language
+          content:
+            application/json:
+              schema:
+                 $ref: '#/components/schemas/Error'
+  /job:
+    get:
+      summary: Finds Pets by tags
+      description: lopen ipsum
+      operationId: job
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept-Language
+          in: header
+          description: ''
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Job'
+        '401':
+          description: Don't have access to the resource
+          content:
+            application/json:
+              schema:
+                 $ref: '#/components/schemas/Error'
+        '406':
+          description: Need a valid language
+          content:
+            application/json:
+              schema:
+                 $ref: '#/components/schemas/Error'
+  /lang:
+    get:
+      summary: Finds Pets by tags
+      description: lopen ipsum
+      operationId: lang
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: string     
+        '401':
+          description: Don't have access to the resource
+          content:
+            application/json:
+              schema:
+                 $ref: '#/components/schemas/Error'
+  /project:
+    get:
+      summary: Finds Pets by tags
+      description: lopen ipsum
+      operationId: project
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept-Language
+          in: header
+          description: ''
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Project'
+        '401':
+          description: Don't have access to the resource
+          content:
+            application/json:
+              schema:
+                 $ref: '#/components/schemas/Error'
+        '406':
+          description: Need a valid language
+          content:
+            application/json:
+              schema:
+                 $ref: '#/components/schemas/Error'
+  /social:
+    get:
+      summary: Finds Pets by tags
+      description: lopen ipsum
+      operationId: social
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept-Language
+          in: header
+          description: ''
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Social'
+        '401':
+          description: Don't have access to the resource
+          content:
+            application/json:
+              schema:
+                 $ref: '#/components/schemas/Error'
+components:
+  schemas:
+    All:
+      type: object
+      properties:
+        name:
+          type: string
+        socials:
+          $ref: '#/components/schemas/Social'
+        descriptions:
+          type: array
+          items:
+            $ref: '#/components/schemas/Description'
+        interests:
+          type: array
+          items:
+            type: string
+        courses:
+          type: array
+          items:
+            $ref: '#/components/schemas/Course'
+        educations:
+          type: array
+          items:
+            $ref: '#/components/schemas/Education'
+        jobs:
+          type: array
+          items:
+            $ref: '#/components/schemas/Job'
+        projects:
+          type: array
+          items:
+            $ref: '#/components/schemas/Project'
+      xml:
+        name: '##default'
+    Course:
+      type: object
+      properties:
+        name:
+          type: string
+        certificate_url:
+          type: string
+        course_url:
+          type: string
+        organization_name:
+          type: string
+        end:
+          type: string
+          format: "YYYY-MM-DD"
+        hours:
+          type: integer
+          description: indicates the number of hours used to finish the course
+        minutes:
+          type: integer
+          description: indicates the number of hours used to finish the course
+      xml:
+        name: '##default'
+    Description:
+      type: object
+      properties:
+        scope:
+          type: string
+          description: indicates the scope where it will be used
+        value:
+          type: string
+          description: the displayed value, to the interface or where needed
+      xml:
+        name: '##default'
+    Education:
+      type: object
+      properties:
+        university:
+          type: string
+        start:
+          type: string
+          format: "YYYY-MM-DD"
+        end:
+          type: string
+          format: "YYYY-MM-DD"
+        thesis:
+          type: string
+        location:
+          type: string
+        title:
+          type: string
+      xml:
+        name: '##default'
+    Error:
+      type: object
+      properties:
+        status:
+          type: string
+          description: Common come as error
+        message:
+          type: string
+          description: Error description message, in english
+        url:
+          type: string
+          description: Resource or documentation url
+      xml:
+        name: '##default'
+    Job:
+      type: object
+      properties:
+        contract_type:
+          type: string
+        description:
+          type: array
+          items:
+            type: string
+        employer:
+          type: string
+        end:
+          type: string
+          format: "YYYY-MM-DD"
+        location:
+          type: string
+        location_type:
+          type: string
+        skill:
+          type: array
+          items:
+            type: string
+        start:
+          type: string
+          format: "YYYY-MM-DD"
+        title:
+          type: string
+      xml:
+        name: '##default'
+    Project:
+      type: object
+      properties:
+        description:
+          type: string
+        name:
+          type: string
+        skill:
+          type: array
+          items:
+            type: string
+        stage:
+          type: string
+        url:
+          type: string
+        visibility:
+          type: string
+      xml:
+        name: '##default'
+    Social:
+      type: object
+      properties:
+        github:
+          type: string
+          description: username
+        linkedin:
+          type: string
+          description: username
+        email:
+          type: string
+          example: user@example.com 
+        site:
+          type: string
+          description: Only domain without protocol
+          example: example.com
+      xml:
+        name: '##default'
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
