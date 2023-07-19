@@ -191,7 +191,7 @@ def get_educations(base_url, token, educations_table_id, lang):
             educations.insert(0, edu_data)
         else:
             educations.append(edu_data)
-    
+
     return educations
 
 
