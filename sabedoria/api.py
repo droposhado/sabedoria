@@ -19,11 +19,12 @@ def verify_token(token):
 
 @auth.error_handler
 def auth_error(status):
-   return {
-       "url": None,
-       "status": "error",
-       "message": "Autentication error"
-   }, 401
+    """Auth customization error"""
+    return {
+        "url": None,
+        "status": "error",
+        "message": f"Autentication error ({status})"
+    }, 401
 
 
 def check_language(func):
