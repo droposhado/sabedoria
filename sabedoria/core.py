@@ -114,7 +114,7 @@ def get_jobs(base_url, token, jobs_table_id, lang):
 
     jobs = []
     for result in jobs_table:
-        jobs.append({
+        job_data = {
             "contract_type": result["contract_type"]["value"],
             "description": [d["value"] for d in result["description_" + lang]],
             "employer": result["employer"],
@@ -124,7 +124,12 @@ def get_jobs(base_url, token, jobs_table_id, lang):
             "skill": [s["value"] for s in result["skill"]],
             "start": result["start"],
             "title": result["title_" + lang],
-        })
+        }
+
+        if result["end"] is None or result["end"] == "":
+            jobs.insert(0, job_data)
+        else:
+            jobs.append(job_data)
 
     return jobs
 
@@ -173,15 +178,20 @@ def get_educations(base_url, token, educations_table_id, lang):
 
     educations = []
     for result in educations_table:
-        educations.append({
+        edu_data = {
             "university": result["university"],
             "start": result["start"],
             "end": result["end"],
             "thesis": result["thesis_" + lang],
             "location": result["location"],
             "title": result["title_" + lang]
-        })
+        }
 
+        if result["end"] is None or result["end"] == "":
+            educations.insert(0, edu_data)
+        else:
+            educations.append(edu_data)
+    
     return educations
 
 
