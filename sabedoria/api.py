@@ -17,6 +17,15 @@ def verify_token(token):
     return False
 
 
+@auth.error_handler
+def auth_error(status):
+   return {
+       "url": None,
+       "status": "error",
+       "message": "Autentication error"
+   }, 401
+
+
 def check_language(func):
     """Reusable function to check if language is supported"""
 
