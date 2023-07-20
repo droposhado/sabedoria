@@ -29,6 +29,7 @@ jobs:
     with:
       registry: quay.io
       repo: droposhado/sabedoria
+      platforms: "linux/amd64,linux/arm64"
       tag: ${{ needs.extraction.outputs.tag }}
       push: true
     secrets:
