@@ -17,6 +17,8 @@ jobs:
     outputs:
       tag: ${{ steps.tag.outputs.tag }}
     steps:
+      - uses: actions/checkout@v3
+
       - name: Extract tag
         uses: ncipollo/semantic-version-action@v1
         id: tag
