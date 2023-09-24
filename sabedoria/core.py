@@ -1,6 +1,8 @@
 
 import requests
 
+from flask import current_app
+
 
 def convert(total_minutes):
     """convert minutes to hours"""
@@ -18,17 +20,26 @@ def convert(total_minutes):
     # else:
     #    time = float("{}.0".format(hours))
 
+    current_app.logger.debug(f"{total_minutes} min converted in {hours} hours")
+
     return hours
 
 
 def get_table(base_url, token, table_id, params):
     """Function to get data from baserow api"""
 
+    current_app.logger.debug(f"base_url {base_url}")
+    current_app.logger.debug(f"table_id {table_id}")
+    current_app.logger.debug(f"params {params}")
+
     req = requests.get(
         f"{base_url}/api/database/rows/table/{table_id}/",
         headers={
             "Authorization": f"Token {token}"
         }, params=params, timeout=5)
+
+    current_app.logger.debug(f"status code {req.status_code}")
+    current_app.logger.debug(f"text {req.text}")
 
     return req.json().get("results")
 
@@ -42,6 +53,9 @@ def get_socials(cfg):
         "email": cfg["EMAIL"],
         "site": cfg["SITE"]
     }
+
+    current_app.logger.debug(f"github {socials['github']}")
+
     return socials
 
 
@@ -58,10 +72,15 @@ def get_descriptions(base_url, token, descs_table_id, lang):
 
     descs = []
     for result in descs_table:
+
+        current_app.logger.debug(result)
+
         descs.append({
             "scope": result["scope"],
             "value": result[lang]
         })
+
+    current_app.logger.debug(f"descriptions count {len(descs)}")
 
     return descs
 
@@ -97,6 +116,9 @@ def get_courses(base_url, token, courses_table_id):
             "minutes": int(result["minutes"])
         })
 
+
+    current_app.logger.debug(f"courses count {len(courses)}")
+
     return courses
 
 
@@ -131,6 +153,8 @@ def get_jobs(base_url, token, jobs_table_id, lang):
         else:
             jobs.append(job_data)
 
+    current_app.logger.debug(f"jobs count {len(jobs)}")
+
     return jobs
 
 
@@ -160,6 +184,8 @@ def get_projects(base_url, token, projects_table_id, lang):
             "url": result["url"],
             "visibility": result["visibility"]["value"]
         })
+
+    current_app.logger.debug(f"projects count {len(projects)}")
 
     return projects
 
@@ -192,6 +218,8 @@ def get_educations(base_url, token, educations_table_id, lang):
         else:
             educations.append(edu_data)
 
+    current_app.logger.debug(f"educations count {len(educations)}")
+
     return educations
 
 
@@ -209,5 +237,7 @@ def get_interests(base_url, token, interests_table_id, lang):
     interests = []
     for result in interests_table:
         interests.append(result[lang])
+
+    current_app.logger.debug(f"interests count {len(interests)}")
 
     return interests
