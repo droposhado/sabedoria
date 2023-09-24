@@ -3,7 +3,10 @@ import os
 
 bind = os.getenv("WEB_BIND", "0.0.0.0:5000")
 # access_log_format = '%({x-forwarded-for}i)s %(l)s %(u)s %(t)s "%(r)s" %(s)s %(b)s "%(f)s" "%(a)s"'
-access_log_format = '%({Fly-Client-Ip}i)s %(l)s %(u)s %(t)s "%(r)s" %(s)s %(b)s "%(f)s" "%(a)s"'
+
+
+acf_default = '%(h)s %(l)s %(u)s %(t)s "%(r)s" %(s)s %(b)s "%(f)s" "%(a)s"'
+access_log_format = os.getent("GUNICORN_ACCESS_LOG_FORMAT", acf_default)
 accesslog = "-"
 errorlog = "-"
 capture_output = True
