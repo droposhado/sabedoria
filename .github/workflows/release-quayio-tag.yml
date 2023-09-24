@@ -2,7 +2,7 @@ name: release quayio tag
 on:
   push:
     tags:
-      - '*'
+      - 'v*'
 
   workflow_dispatch:
 
