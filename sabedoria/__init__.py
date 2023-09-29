@@ -5,7 +5,9 @@ from flask import Flask
 from flask.logging import create_logger
 from sentry_sdk.integrations.flask import FlaskIntegration
 
+from . import cli
 from .views import apiv1, apiv2, health
+from .models import db
 
 __version__ = "0.0.1"
 
@@ -30,6 +32,12 @@ def create_app(config_string="sabedoria.config.ProductionConfig"):
 
     app.logger = create_logger(app)
     app.logger.setLevel(app.config["LOG_LEVEL"])
+
+    db.init_app(app)
+
+    app.cli.add_command(cli.create_tables_command)
+    app.cli.add_command(cli.drop_tables_command)
+
 
     app.register_blueprint(apiv1.bp)
     app.register_blueprint(apiv2.bp)
