@@ -25,6 +25,11 @@ class Config():
     SITE = os.getenv("SITE")
 
 
+class TestConfig(Config):
+    DEBUG = True
+    TESTING = True
+
+
 class DevConfig(Config):
     DEBUG = True
 
