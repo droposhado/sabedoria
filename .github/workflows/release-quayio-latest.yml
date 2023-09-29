@@ -13,6 +13,23 @@ jobs:
     env:
       FLASK_APP: sabedoria:create_app('sabedoria.config.TestConfig')
       TOKEN: awesometoken
+        DEBUG: 1
+        BASEROW_TOKEN: fasdgfik
+        BASEROW_URL: https://api.baserow.io
+        COURSE_TABLE_ID: 999999
+        DESCRIPTION_TABLE_ID: 999999
+        EMAIL: mail@sample.com
+        GITHUB: username
+        HOST: 0.0.0.0
+        INTEREST_TABLE_ID: 999999
+        JOB_TABLE_ID: 999999
+        LANGS: en-US,pt-BR
+        LINKEDIN: username
+        NAME: "Real Name"
+        PORT: 5000
+        PROJECT_TABLE_ID: 999999
+        SITE: sample.com
+        WEB_BIND: 0.0.0.0:5000
 
     services:
       postgres:
