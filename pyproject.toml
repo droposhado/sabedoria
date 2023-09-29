@@ -103,3 +103,7 @@ unauthorized_licenses = [
     "GNU Library or Lesser General Public License (LGPL)",
     "unknown"
 ]
+
+[tool.liccheck.authorized_packages]
+psycopg2-binary = "*"
+typing-extensions = "*"
