@@ -3,6 +3,14 @@ import os
 
 
 class Config():
+
+    db_url = "postgresql://maya:maya@localhost:5432/maya"
+
+    DEBUG = bool(os.getenv("DEBUG", False))
+    LOG_LEVEL = logging.INFO
+    SQLALCHEMY_DATABASE_URI = os.getenv("DATABASE_URL", db_url)
+    SQLALCHEMY_TRACK_MODIFICATIONS = False
+
     BASEROW_TOKEN = os.getenv("BASEROW_TOKEN")
     BASEROW_URL = os.getenv("BASEROW_URL")
     DEBUG = bool(os.getenv("DEBUG", False))

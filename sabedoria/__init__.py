@@ -7,7 +7,7 @@ from sentry_sdk.integrations.flask import FlaskIntegration
 
 from . import cli
 from .views import apiv1, apiv2, health
-from .models import db
+from .models.db import db
 
 __version__ = "0.0.1"
 
