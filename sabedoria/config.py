@@ -4,7 +4,7 @@ import os
 
 class Config():
 
-    db_url = "postgresql://maya:maya@localhost:5432/maya"
+    db_url = "postgresql://sabedoria:sabedoria@localhost:5432/sabedoria"
 
     DEBUG = bool(os.getenv("DEBUG", False))
     LOG_LEVEL = logging.INFO
