@@ -1,4 +1,4 @@
 import flask_sqlalchemy
 
-
-db = flask_sqlalchemy.SQLAlchemy()
+from db import db
+from models import cv, health
