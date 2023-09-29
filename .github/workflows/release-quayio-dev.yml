@@ -7,13 +7,56 @@ on:
   workflow_dispatch:
 
 jobs:
+
+  tests:
+    runs-on: ubuntu-latest
+    env:
+      FLASK_APP: sabedoria:create_app('sabedoria.config.TestConfig')
+      TOKEN: awesometoken
+
+    services:
+      postgres:
+        image: postgres:14
+        env:
+          POSTGRES_DB: sabedoria
+          POSTGRES_USER: sabedoria
+          POSTGRES_PASSWORD: sabedoria
+        ports:
+          - 5432:5432/tcp
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
+    steps:
+
+      - name: checkout repo
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Create tables
+        run: flask create-tables
+
+      - name: Running tests
+        run: python -m unittest discover -s tests -v
+
   python-best-pratices:
     uses: droposhado/workflows/.github/workflows/python-best-practices.yml@main
     with:
       python_version: "3.10"
 
   build-push:
-    needs: python-best-pratices
+    needs:
+      - tests
+      - python-best-pratices
     uses: droposhado/workflows/.github/workflows/docker-build-push.yml@main
     with:
       registry: quay.io

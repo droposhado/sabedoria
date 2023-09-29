@@ -3,9 +3,9 @@ from functools import wraps
 from flask import Blueprint, current_app, request
 from flask_httpauth import HTTPTokenAuth
 
-from . import core
+from sabedoria import core
 
-bp = Blueprint("infos", __name__, url_prefix="/v1")
+bp = Blueprint("v2", __name__, url_prefix="/api/v2")
 auth = HTTPTokenAuth("Bearer")
 
 
