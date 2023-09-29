@@ -1,7 +1,7 @@
 import os
 import unittest
 
-from sabedoria.models.db import db
+import sabedoria
 
 
 class Base(unittest.TestCase):
@@ -14,12 +14,12 @@ class Base(unittest.TestCase):
 
         with self.app.app_context():
 
-            db.drop_all()
-            db.create_all()
+            sabedoria.models.db.db.drop_all()
+            sabedoria.models.db.db.create_all()
 
 
     def setDown(self):
 
         with self.app.app_context():
 
-            db.drop_all()
+            sabedoria.models.db.db.drop_all()
