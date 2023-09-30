@@ -66,4 +66,3 @@ class Liquid(Base):
             "type": self.type,
             "username": self.username
         }
-

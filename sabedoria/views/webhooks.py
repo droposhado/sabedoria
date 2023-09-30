@@ -5,7 +5,6 @@ from . import core
 bp = Blueprint("webhook", __name__, url_prefix="/webhook")
 
 
-
 @bp.route("/", methods=["GET"])
 def index():
     """Main route with all infos returned"""
@@ -46,4 +45,3 @@ def index():
     }
 
     return res
-
