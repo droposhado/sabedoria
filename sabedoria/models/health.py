@@ -1,5 +1,3 @@
-from sqlalchemy import text
-from sqlalchemy.dialects.postgresql import UUID
 
 from .db import db, Base
 

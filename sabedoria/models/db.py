@@ -1,4 +1,6 @@
 import flask_sqlalchemy
+from sqlalchemy import text
+from sqlalchemy.dialects.postgresql import UUID
 
 db = flask_sqlalchemy.SQLAlchemy()
 
