@@ -5,7 +5,7 @@ import uuid
 from flask import Blueprint, current_app, request
 from flask_httpauth import HTTPTokenAuth
 
-from sabedoria import models
+from ..models import health
 
 bp = Blueprint("v1", __name__, url_prefix="/v1")
 auth = HTTPTokenAuth(scheme="Bearer")
@@ -49,8 +49,8 @@ def liquid_get():
 
     # verificar quais filtros podem ser utilizados
 
-    order = models.Liquid.creation_date.asc()
-    liquids = models.Liquid().query.order_by(order)
+    order = health.Liquid.creation_date.asc()
+    liquids = health.Liquid().query.order_by(order)
 
     return [liquid.serialize() for liquid in liquids]
 
@@ -65,11 +65,11 @@ def liquid_get_by_today():
     end = datetime(now.year, now.month, now.day, 23, 59, 59)
 
     query_filters = [
-        models.Liquid.creation_date > start,
-        models.Liquid.creation_date < end
+        health.Liquid.creation_date > start,
+        health.Liquid.creation_date < end
     ]
 
-    liquids = models.Liquid().query.filter(*query_filters)
+    liquids = health.Liquid().query.filter(*query_filters)
 
     return [liquid.serialize() for liquid in liquids]
 
@@ -88,7 +88,7 @@ def liquid_get_by_id(lq_id):
                 "message": "Invalid UUID"
          }, 404
 
-    liquid = models.Liquid.get(lq_id)
+    liquid = health.Liquid.get(lq_id)
 
     if liquid is None:
         return {
@@ -123,7 +123,7 @@ def liquid_post():
 
     req_json["last_modification"] = datetime.utcnow()
 
-    liquid = models.Liquid(**req_json)
+    liquid = health.Liquid(**req_json)
     liquid.save()
 
     return liquid.serialize(), 200
@@ -144,7 +144,7 @@ def liquid_delete_by_id(lq_id):
          }, 404
 
 
-    liquid = models.Liquid.get(lq_id)
+    liquid = health.Liquid.get(lq_id)
 
     if liquid is None:
         return {

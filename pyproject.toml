@@ -40,7 +40,8 @@ src_paths = ["sabedoria"]
 ignore = [
     "CVS",
     "config.py",
-    "gunicorn.py"
+    "gunicorn.py",
+    "tests"
 ]
 
 [tool.pylint.format]
