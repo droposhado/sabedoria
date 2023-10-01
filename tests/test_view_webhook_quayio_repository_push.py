@@ -15,7 +15,9 @@ class Webhook(Base):
         data_file = os.path.join(test_folder,
                                  "data/quay.io-repository-push.json")
         self.assertTrue(os.path.exists(data_file))
-        data = json.loads(data_file)
+
+        with open(data_file, "r") as content:
+            data = json.load(content)
 
         with self.app.test_request_context():
 
