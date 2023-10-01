@@ -9,10 +9,8 @@ COPY . .
 
 RUN apk add --no-cache alpine-sdk && \
     python -m venv $VENV && \
-    $VENV/bin/pip install --no-cache-dir -U "setuptools>=65.5.1" && \
-    $VENV/bin/pip install --no-cache-dir -U -r requirements.txt
-
-RUN $VENV/bin/pip list
+    $VENV/bin/pip install --no-cache-dir -U "flit" && \
+    $VENV/bin/pip install --no-cache-dir -U .
 
 
 FROM python:3.10-alpine3.17

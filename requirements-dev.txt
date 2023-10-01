@@ -1,5 +1,0 @@
-pylint
-isort
-bandit
-ruff
-liccheck

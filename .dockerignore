@@ -7,6 +7,5 @@ docs
 .gitignore
 Makefile
 openapi.yml
-README.md
 scripts
 tests
