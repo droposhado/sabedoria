@@ -3,7 +3,7 @@ from flask import url_for
 from base import Base
 
 
-class Liquid(Base):
+class ApiV1(Base):
 
 
     def test_liquid_basic_workflow(self):

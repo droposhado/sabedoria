@@ -1,8 +1,7 @@
-
 from base import Base
 
 
-class Liquid(Base):
+class ApiV1(Base):
 
 
     def test_liquid_get_not_exist(self):

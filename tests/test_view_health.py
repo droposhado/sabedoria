@@ -3,7 +3,7 @@ from flask import url_for
 from base import Base
 
 
-class Health(Base):
+class ApiV1(Base):
 
 
     def test_health_get(self):

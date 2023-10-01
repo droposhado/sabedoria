@@ -3,7 +3,7 @@ from flask import url_for
 from base import Base
 
 
-class Family400(Base):
+class ApiV1(Base):
 
     def test_401(self):
 

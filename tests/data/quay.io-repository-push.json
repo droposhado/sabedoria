@@ -1,0 +1,12 @@
+{
+  "repository": "droposhado/sabedoria",
+  "namespace": "droposhado",
+  "name": "sabedoria",
+  "docker_url": "quay.io/droposhado/sabedoria",
+  "homepage": "https://quay.io/repository/droposhado/sabedoria",
+  "updated_tags": [
+    "latest",
+    "foo"
+  ],
+  "pruned_image_count": 3
+}
