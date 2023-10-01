@@ -14,7 +14,7 @@ class Config():
     BASEROW_TOKEN = os.getenv("BASEROW_TOKEN")
     BASEROW_URL = os.getenv("BASEROW_URL")
     DEBUG = bool(os.getenv("DEBUG", False))
-    LANGS = os.getenv("LANGS").split(",")
+    LANGS = os.getenv("LANGS", "").split(",")
     LOG_LEVEL = logging.INFO
     TESTING = bool(os.getenv("TESTING", False))
     TOKEN = os.getenv("TOKEN")
