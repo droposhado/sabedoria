@@ -6,7 +6,7 @@ from flask.logging import create_logger
 from sentry_sdk.integrations.flask import FlaskIntegration
 
 from . import cli
-from .views import apiv1, apiv2, health
+from .views import apiv1, apiv2, health, webhooks
 from .models.db import db
 
 __version__ = "0.0.1"
@@ -42,6 +42,7 @@ def create_app(config_string="sabedoria.config.ProductionConfig"):
     app.register_blueprint(apiv1.bp)
     app.register_blueprint(apiv2.bp)
     app.register_blueprint(health.bp)
+    app.register_blueprint(webhooks.bp)
 
 
     @app.route("/health", methods=["GET"])
