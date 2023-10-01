@@ -81,3 +81,4 @@ tests: docker-pg-start
 	python -m unittest discover -s tests -vvv
 	flask drop-tables
 	pip uninstall sabedoria -y
+	$(MAKE) docker-pg-stop
