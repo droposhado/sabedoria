@@ -28,7 +28,7 @@ dependencies = [
     "MarkupSafe==2.1.2",
     "requests==2.31.0",
     "urllib3==1.26.15",
-    "Werkzeug==2.2.3",
+    "Werkzeug==3.0.1",
     "sentry-sdk[flask]"
 ]
 
