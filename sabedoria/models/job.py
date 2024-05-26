@@ -33,7 +33,7 @@ class Job(Base):
 
     def serialize(self):
         """Serialize model to dict"""
-        return super(self.__class__, self).serialize({
+        return super(Job, self).serialize({
             "title": self.title,
             "description": self.description,
             "url": self.url,

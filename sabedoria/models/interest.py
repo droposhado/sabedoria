@@ -16,6 +16,6 @@ class Interest(Base):
 
     def serialize(self):
         """Serialize model to dict"""
-        return super(self.__class__, self).serialize({
+        return super(Interest, self).serialize({
             "text": self.title
         })

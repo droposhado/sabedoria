@@ -20,7 +20,7 @@ class Platform(Base):
 
     def serialize(self):
         """Serialize model to dict"""
-        return super(self.__class__, self).serialize({
+        return super(Platform, self).serialize({
             "name": self.name,
             "url": self.url,
             "courses": self.courses
