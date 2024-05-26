@@ -24,7 +24,7 @@ class Education(Base):
 
     def serialize(self):
         """Serialize model to dict"""
-        return super(Education, self).serialize({
+        return super().serialize({
             "title": self.title,
             "university": self.university,
             "thesis": self.thesis,

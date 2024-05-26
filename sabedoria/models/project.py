@@ -26,7 +26,7 @@ class Project(Base):
 
     def serialize(self):
         """Serialize model to dict"""
-        return super(Project, self).serialize({
+        return super().serialize({
             "name": self.name,
             "slug": self.slug,
             "internal_code": self.internal_code,

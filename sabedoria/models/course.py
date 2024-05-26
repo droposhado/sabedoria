@@ -32,7 +32,7 @@ class Course(Base):
 
     def serialize(self):
         """Serialize model to dict"""
-        return super(Course, self).serialize({
+        return super().serialize({
             "title": self.title,
             "minutes": self.minutes,
             "end": self.end.isoformat(),
