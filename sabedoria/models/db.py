@@ -40,8 +40,8 @@ class Base(db.Model):
 
     def serialize(self, obj):
         """Serialize base model to dict"""
-        return {
+        return obj.update({
             "id": self.id,
             "creation_date": self.creation_date.isoformat(),
             "last_modification": self.last_modification.isoformat()
-        }
+        })

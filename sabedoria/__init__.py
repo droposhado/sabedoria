@@ -7,9 +7,9 @@ from sentry_sdk.integrations.flask import FlaskIntegration
 
 from . import cli
 from .models.db import db
-from .views import apiv1, apiv2, health, webhooks
+from .views import apiv1, apiv2
 
-__version__ = "0.0.1"
+__version__ = "2.0.1"
 
 
 def create_app(config_string="sabedoria.config.ProductionConfig"):
@@ -41,8 +41,6 @@ def create_app(config_string="sabedoria.config.ProductionConfig"):
 
     app.register_blueprint(apiv1.bp)
     app.register_blueprint(apiv2.bp)
-    app.register_blueprint(health.bp)
-    app.register_blueprint(webhooks.bp)
 
 
     @app.route("/health", methods=["GET"])
