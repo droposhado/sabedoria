@@ -6,8 +6,8 @@ from flask.logging import create_logger
 from sentry_sdk.integrations.flask import FlaskIntegration
 
 from . import cli
-from .views import apiv1, apiv2, health, webhooks
 from .models.db import db
+from .views import apiv1, apiv2, health, webhooks
 
 __version__ = "0.0.1"
 

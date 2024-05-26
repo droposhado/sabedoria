@@ -1,6 +1,6 @@
 import json
-from datetime import datetime
 import uuid
+from datetime import datetime
 
 from flask import Blueprint, current_app, request
 from flask_httpauth import HTTPTokenAuth

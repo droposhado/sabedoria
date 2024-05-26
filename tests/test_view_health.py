@@ -1,6 +1,5 @@
-from flask import url_for
-
 from base import Base
+from flask import url_for
 
 
 class ApiV1(Base):
