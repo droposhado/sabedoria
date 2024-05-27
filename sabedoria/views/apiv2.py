@@ -57,131 +57,53 @@ def check_language(func):
 @check_language
 def index():
     """Main route with all infos returned"""
-
-    lang = request.headers.get("Accept-Language")
-
-    br_token = current_app.config["BASEROW_TOKEN"]
-    br_url = current_app.config["BASEROW_URL"]
-
-    name = current_app.config["NAME"]
-
-    cfg = current_app.config
-
-    socials = core.get_socials(current_app.config)
-
-    descriptions = core.get_descriptions(br_url, br_token,
-                                         cfg["DESCRIPTION_TABLE_ID"], lang)
-
-    courses = core.get_courses(br_url, br_token, cfg["COURSE_TABLE_ID"])
-
-    jobs = core.get_jobs(br_url, br_token, cfg["JOB_TABLE_ID"], lang)
-
-    projects = core.get_projects(br_url, br_token, cfg["PROJECT_TABLE_ID"], lang)
-
-    educations = core.get_educations(br_url, br_token, cfg["EDUCATION_TABLE_ID"], lang)
-
-    interests = core.get_interests(br_url, br_token, cfg["INTEREST_TABLE_ID"], lang)
-
-    res = {
-        "name": name,
-        "socials": socials,
-        "descriptions": descriptions,
-        "interests": interests,
-        "courses": courses,
-        "educations": educations,
-        "jobs": jobs,
-        "projects": projects
-    }
-
-    return res
+    return {}
 
 
 @bp.route("/social", methods=["GET"])
 @auth.login_required
 def social():
     """Returning socials"""
-
-    res = core.get_socials(current_app.config)
-
-    return res
+    return {}
 
 
 @bp.route("/course", methods=["GET"])
 @auth.login_required
 def course():
-    """Returning course from baserow"""
-
-    br_token = current_app.config["BASEROW_TOKEN"]
-    br_url = current_app.config["BASEROW_URL"]
-    courses_table_id = current_app.config["COURSE_TABLE_ID"]
-
-    res = core.get_courses(br_url, br_token, courses_table_id)
-
-    return res
+    """Returning course"""
+    return []
 
 
 @bp.route("/job", methods=["GET"])
 @auth.login_required
 @check_language
 def job():
-    """Returning job from baserow"""
-
-    lang = request.headers.get("Accept-Language")
-    br_token = current_app.config["BASEROW_TOKEN"]
-    br_url = current_app.config["BASEROW_URL"]
-    jobs_table_id = current_app.config["JOB_TABLE_ID"]
-
-    res = core.get_jobs(br_url, br_token, jobs_table_id, lang)
-
-    return res
+    """Returning job"""
+    return []
 
 
 @bp.route("/project", methods=["GET"])
 @auth.login_required
 @check_language
 def project():
-    """Returning project from baserow"""
-
-    lang = request.headers.get("Accept-Language")
-    br_token = current_app.config["BASEROW_TOKEN"]
-    br_url = current_app.config["BASEROW_URL"]
-    projects_table_id = current_app.config["PROJECT_TABLE_ID"]
-
-    res = core.get_projects(br_url, br_token, projects_table_id, lang)
-
-    return res
+    """Returning project"""
+    return []
 
 
 @bp.route("/education", methods=["GET"])
 @auth.login_required
 @check_language
 def education():
-    """Returning education list from baserow"""
-
-    lang = request.headers.get("Accept-Language")
-    br_token = current_app.config["BASEROW_TOKEN"]
-    br_url = current_app.config["BASEROW_URL"]
-    educations_table_id = current_app.config["EDUCATION_TABLE_ID"]
-
-    res = core.get_educations(br_url, br_token, educations_table_id, lang)
-
-    return res
+    """Returning education list"""
+    return []
 
 
 @bp.route("/interest", methods=["GET"])
 @auth.login_required
 @check_language
 def interest():
-    """Returning interest list from baserow"""
-
-    lang = request.headers.get("Accept-Language")
-    br_token = current_app.config["BASEROW_TOKEN"]
-    br_url = current_app.config["BASEROW_URL"]
-    interests_table_id = current_app.config["INTEREST_TABLE_ID"]
-
-    res = core.get_interests(br_url, br_token, interests_table_id, lang)
-
-    return res
+    """Returning interest list"""
+    return []
 
 
 @bp.route("/lang", methods=["GET"])

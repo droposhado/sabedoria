@@ -31,7 +31,7 @@ bandit:
 	bandit -v -r . -c pyproject.toml
 
 pylint:
-	pylint -j $(shell nproc) --recursive=y .
+	pylint --recursive=y .
 
 isort:
 	isort .
