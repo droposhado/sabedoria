@@ -3,6 +3,8 @@ from functools import wraps
 from flask import Blueprint, current_app, request
 from flask_httpauth import HTTPTokenAuth
 
+from sqlalchemy import exc
+
 from .models import db
 
 
@@ -53,23 +55,23 @@ def check_language(func):
     return wrapped
 
 
-@app.route("/health", methods=["GET"])
+@bp.route("/health", methods=["GET"])
 def health_method_get():
     """Simple GET return to healthcheck"""
     try:
         db.db.session.query("1").from_statement("SELECT 1").all()
         return "OK", 200
-    except:
+    except exc.SQLAlchemyError:
         return "", 500
 
 
-@app.route("/health", methods=["HEAD"])
+@bp.route("/health", methods=["HEAD"])
 def health_method_head():
     """Simple HEAD return to healthcheck"""
     try:
         db.db.session.query("1").from_statement("SELECT 1").all()
         return None, 200
-    except:
+    except exc.SQLAlchemyError:
         return None, 500
 
 
