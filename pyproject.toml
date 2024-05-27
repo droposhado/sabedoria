@@ -53,6 +53,8 @@ profile = "black"
 src_paths = ["sabedoria"]
 
 [tool.pylint.main]
+# autodetect
+jobs = 0
 ignore = [
     "CVS",
     "config.py",
