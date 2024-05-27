@@ -11,10 +11,11 @@ class Education(Base):
     university = db.Column(db.String)
     url  = db.Column(db.String)
     location  = db.Column(db.String)
-    start = db.Column(db.Date(default=date.today))
-    end = db.Column(db.Date(default=date.today))
+    start = db.Column(db.Date)
+    end = db.Column(db.Date)
     title  = db.Column(db.JSON)
     thesis  = db.Column(db.JSON)
+
 
     @staticmethod
     def get(idn):
@@ -22,14 +23,14 @@ class Education(Base):
         return db.session.get(Education, idn)
 
 
-    def serialize(self):
-        """Serialize model to dict"""
-        return super().serialize({
-            "title": self.title,
-            "university": self.university,
-            "thesis": self.thesis,
-            "url": self.url,
-            "location": self.location,
-            "start": self.start.isoformat(),
-            "end": self.end.isoformat()
-        })
+    # def serialize(self):
+    #     """Serialize model to dict"""
+    #     return super().serialize({
+    #         "title": self.title,
+    #         "university": self.university,
+    #         "thesis": self.thesis,
+    #         "url": self.url,
+    #         "location": self.location,
+    #         "start": self.start.isoformat(),
+    #         "end": self.end.isoformat()
+    #     })

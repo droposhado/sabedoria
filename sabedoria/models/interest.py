@@ -14,8 +14,8 @@ class Interest(Base):
         return db.session.get(Interest, idn)
 
 
-    def serialize(self):
-        """Serialize model to dict"""
-        return super().serialize({
-            "text": self.title
-        })
+    # def serialize(self):
+    #     """Serialize model to dict"""
+    #     return super().serialize({
+    #         "text": self.title
+    #     })

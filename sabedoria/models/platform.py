@@ -15,13 +15,12 @@ class Platform(Base):
     @staticmethod
     def get(idn):
         """Get a liquid by id"""
-        return db.session.get(Platform, idn)
+        return db.session.get(Social, idn)
 
 
-    def serialize(self):
-        """Serialize model to dict"""
-        return super().serialize({
-            "name": self.name,
-            "url": self.url,
-            "courses": self.courses
-        })
+    # def serialize(self):
+    #     """Serialize model to dict"""
+    #     return super().serialize({
+    #         "name": self.name,
+    #         "url": self.url
+    #     })

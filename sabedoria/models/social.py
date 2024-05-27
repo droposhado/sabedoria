@@ -17,9 +17,9 @@ class Social(Base):
         return db.session.get(Social, idn)
 
 
-    def serialize(self):
-        """Serialize model to dict"""
-        return super().serialize({
-            "name": self.name,
-            "value": self.value
-        })
+    # def serialize(self):
+    #     """Serialize model to dict"""
+    #     return super().serialize({
+    #         "name": self.name,
+    #         "value": self.value
+    #     })

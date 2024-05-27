@@ -18,11 +18,11 @@ class Employer(Base):
         return db.session.get(Employer, idn)
 
 
-    def serialize(self):
-        """Serialize model to dict"""
-        return super().serialize({
-            "name": self.name,
-            "description": self.description,
-            "url": self.url,
-            "jobs": self.jobs
-        })
+    # def serialize(self):
+    #     """Serialize model to dict"""
+    #     return super().serialize({
+    #         "name": self.name,
+    #         "description": self.description,
+    #         "url": self.url,
+    #         "jobs": self.jobs
+    #     })

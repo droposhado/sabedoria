@@ -14,10 +14,10 @@ class Job(Base):
     description = db.Column(db.JSON)
     url  = db.Column(db.String)
     location  = db.Column(db.String)
-    start = db.Column(db.Date(default=date.today))
-    end = db.Column(db.Date(default=date.today))
+    start = db.Column(db.Date)
+    end = db.Column(db.Date)
 
-    employer_id = db.Column(UUID, db.ForeignKey("employer.id"))
+    employer_id = db.Column(UUID, db.ForeignKey("employers.id"))
 
     location_type  = db.Column(db.String)
     contract_type  = db.Column(db.String)
@@ -31,17 +31,17 @@ class Job(Base):
         return db.session.get(Job, idn)
 
 
-    def serialize(self):
-        """Serialize model to dict"""
-        return super().serialize({
-            "title": self.title,
-            "description": self.description,
-            "url": self.url,
-            "location": self.location,
-            "start": self.start.isoformat(),
-            "end": self.end.isoformat(),
-            "employer_id": self.employer_id,
-            "location_type": self.location_type,
-            "contract_type": self.contract_type,
-            "skills": self.skills
-        })
+    # def serialize(self):
+    #     """Serialize model to dict"""
+    #     return super().serialize({
+    #         "title": self.title,
+    #         "description": self.description,
+    #         "url": self.url,
+    #         "location": self.location,
+    #         "start": self.start.isoformat(),
+    #         "end": self.end.isoformat(),
+    #         "employer_id": self.employer_id,
+    #         "location_type": self.location_type,
+    #         "contract_type": self.contract_type,
+    #         "skills": self.skills
+    #     })

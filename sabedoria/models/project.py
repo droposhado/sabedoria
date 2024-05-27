@@ -24,17 +24,17 @@ class Project(Base):
         return db.session.get(Project, idn)
 
 
-    def serialize(self):
-        """Serialize model to dict"""
-        return super().serialize({
-            "name": self.name,
-            "slug": self.slug,
-            "internal_code": self.internal_code,
-            "site_url": self.site_url,
-            "repo_url": self.repo_url,
-            "archived": self.archived,
-            "pinned": self.pinned,
-            "private": self.private,
-            "description": self.description,
-            "skills": self.skills
-        })
+    # def serialize(self):
+    #     """Serialize model to dict"""
+    #     return super().serialize({
+    #         "name": self.name,
+    #         "slug": self.slug,
+    #         "internal_code": self.internal_code,
+    #         "site_url": self.site_url,
+    #         "repo_url": self.repo_url,
+    #         "archived": self.archived,
+    #         "pinned": self.pinned,
+    #         "private": self.private,
+    #         "description": self.description,
+    #         "skills": self.skills
+    #     })

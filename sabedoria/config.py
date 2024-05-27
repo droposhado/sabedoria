@@ -11,9 +11,7 @@ class Config():
     SQLALCHEMY_DATABASE_URI = os.getenv("DATABASE_URL", db_url)
     SQLALCHEMY_TRACK_MODIFICATIONS = False
 
-    DEBUG = bool(os.getenv("DEBUG", False))
     LANGS = os.getenv("LANGS", "").split(",")
-    LOG_LEVEL = logging.INFO
     TESTING = bool(os.getenv("TESTING", False))
     TOKEN = os.getenv("TOKEN")
 

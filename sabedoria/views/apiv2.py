@@ -59,7 +59,7 @@ def check_language(func):
 def health_method_get():
     """Simple GET return to healthcheck"""
     try:
-        models.db.db.session.execute(select(1))
+        models.db.session.execute(select(1))
         return "OK", 200
     except SQLAlchemyError:
         return "", 500
@@ -78,9 +78,9 @@ def index_method_get():
 def social_method_get():
     """Returning socials"""
 
-    socials = models.social.Social().query.all()
+    socials = models.Social().query.all()
     res = core.get_social(socials)
-    return res
+    return res, 200
 
 
 @bp.route("/course", methods=["GET"])
