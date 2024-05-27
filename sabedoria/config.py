@@ -17,12 +17,6 @@ class Config():
     TESTING = bool(os.getenv("TESTING", False))
     TOKEN = os.getenv("TOKEN")
 
-    NAME = os.getenv("NAME")
-    GITHUB = os.getenv("GITHUB")
-    LINKEDIN = os.getenv("LINKEDIN")
-    EMAIL = os.getenv("EMAIL")
-    SITE = os.getenv("SITE")
-
 
 class TestConfig(Config):
     DEBUG = True

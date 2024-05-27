@@ -2,11 +2,9 @@ from functools import wraps
 
 from flask import Blueprint, current_app, request
 from flask_httpauth import HTTPTokenAuth
-
 from sqlalchemy import exc
 
-from sabedoria.models import db
-
+from sabedoria import core, models
 
 bp = Blueprint("v2", __name__, url_prefix="/api/v2")
 auth = HTTPTokenAuth("Bearer")
@@ -59,7 +57,7 @@ def check_language(func):
 def health_method_get():
     """Simple GET return to healthcheck"""
     try:
-        db.db.session.query("1").from_statement("SELECT 1").all()
+        models.db.db.session.query("1").from_statement("SELECT 1").all()
         return "OK", 200
     except exc.SQLAlchemyError:
         return "", 500
@@ -69,7 +67,7 @@ def health_method_get():
 def health_method_head():
     """Simple HEAD return to healthcheck"""
     try:
-        db.db.session.query("1").from_statement("SELECT 1").all()
+        models.db.db.session.query("1").from_statement("SELECT 1").all()
         return None, 200
     except exc.SQLAlchemyError:
         return None, 500
@@ -78,21 +76,24 @@ def health_method_head():
 @bp.route("/", methods=["GET"])
 @auth.login_required
 @check_language
-def index():
+def index_method_get():
     """Main route with all infos returned"""
     return {}
 
 
 @bp.route("/social", methods=["GET"])
 @auth.login_required
-def social():
+def social_method_get():
     """Returning socials"""
-    return {}
+
+    socials = models.social.Social().query.all()
+    res = core.get_social(socials)
+    return res
 
 
 @bp.route("/course", methods=["GET"])
 @auth.login_required
-def course():
+def course_method_get():
     """Returning course"""
     return []
 
@@ -100,7 +101,7 @@ def course():
 @bp.route("/job", methods=["GET"])
 @auth.login_required
 @check_language
-def job():
+def job_method_get():
     """Returning job"""
     return []
 
@@ -108,7 +109,7 @@ def job():
 @bp.route("/project", methods=["GET"])
 @auth.login_required
 @check_language
-def project():
+def project_method_get():
     """Returning project"""
     return []
 
@@ -116,7 +117,7 @@ def project():
 @bp.route("/education", methods=["GET"])
 @auth.login_required
 @check_language
-def education():
+def education_method_get():
     """Returning education list"""
     return []
 
@@ -124,14 +125,14 @@ def education():
 @bp.route("/interest", methods=["GET"])
 @auth.login_required
 @check_language
-def interest():
+def interest_method_get():
     """Returning interest list"""
     return []
 
 
 @bp.route("/lang", methods=["GET"])
 @auth.login_required
-def language():
+def language_method_get():
     """Return list with supported languages"""
 
     return current_app.config["LANGS"]

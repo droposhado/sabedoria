@@ -1,4 +1,3 @@
-from flask import current_app
 
 
 def convert(total_minutes):
@@ -17,6 +16,14 @@ def convert(total_minutes):
     # else:
     #    time = float("{}.0".format(hours))
 
-    current_app.logger.debug(f"{total_minutes} min converted in {hours} hours")
-
     return hours
+
+
+def get_social(socials):
+    """Create a json as v1"""
+
+    res = {}
+    for social in socials:
+        res[social.name] = social.value
+
+    return res
