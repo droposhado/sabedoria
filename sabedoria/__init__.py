@@ -41,16 +41,6 @@ def create_app(config_string="sabedoria.config.ProductionConfig"):
     app.register_blueprint(apiv2.bp)
 
 
-    @app.route("/health", methods=["GET"])
-    def health_method_get():
-        """Simple GET return to healthcheck"""
-        return "OK"
-
-    @app.route("/health", methods=["HEAD"])
-    def health_method_head():
-        """Simple HEAD return to healthcheck"""
-        return None
-
     @app.errorhandler(404)
     def route_not_found(err):
         """Custom 404 pages returning json"""
