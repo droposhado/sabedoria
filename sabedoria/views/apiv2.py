@@ -2,9 +2,11 @@ from functools import wraps
 
 from flask import Blueprint, current_app, request
 from flask_httpauth import HTTPTokenAuth
-from sqlalchemy import exc
+from sqlalchemy.exc import SQLAlchemyError
+from sqlalchemy import select
 
 from sabedoria import core, models
+
 
 bp = Blueprint("v2", __name__, url_prefix="/api/v2")
 auth = HTTPTokenAuth("Bearer")
@@ -57,20 +59,10 @@ def check_language(func):
 def health_method_get():
     """Simple GET return to healthcheck"""
     try:
-        models.db.db.session.query("1").from_statement("SELECT 1").all()
+        models.db.db.session.execute(select(1))
         return "OK", 200
-    except exc.SQLAlchemyError:
+    except SQLAlchemyError:
         return "", 500
-
-
-@bp.route("/health", methods=["HEAD"])
-def health_method_head():
-    """Simple HEAD return to healthcheck"""
-    try:
-        models.db.db.session.query("1").from_statement("SELECT 1").all()
-        return None, 200
-    except exc.SQLAlchemyError:
-        return None, 500
 
 
 @bp.route("/", methods=["GET"])
