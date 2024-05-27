@@ -5,7 +5,7 @@ from flask_httpauth import HTTPTokenAuth
 
 from sqlalchemy import exc
 
-from .models import db
+from sabedoria.models import db
 
 
 bp = Blueprint("v2", __name__, url_prefix="/api/v2")
