@@ -7,7 +7,7 @@ from sentry_sdk.integrations.flask import FlaskIntegration
 
 from . import cli
 from .models.db import db
-from .views import apiv1, apiv2
+from .views import apiv2
 
 __version__ = "2.0.1"
 
@@ -38,8 +38,6 @@ def create_app(config_string="sabedoria.config.ProductionConfig"):
     app.cli.add_command(cli.create_tables_command)
     app.cli.add_command(cli.drop_tables_command)
 
-
-    app.register_blueprint(apiv1.bp)
     app.register_blueprint(apiv2.bp)
 
 
