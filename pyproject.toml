@@ -59,7 +59,8 @@ ignore = [
     "CVS",
     "config.py",
     "gunicorn.py",
-    "tests"
+    "tests",
+    "venv"
 ]
 
 [tool.pylint.format]
@@ -72,7 +73,11 @@ disable = [
 ]
 
 [tool.bandit]
-exclude_dirs = ["tests",".git", "__pycache__"]
+exclude_dirs = [
+    "tests",
+    ".git",
+    "__pycache__",
+    "venv"]
 
 [tool.ruff]
 line-length = 88
@@ -90,6 +95,9 @@ select = [
 "sabedoria/gunicorn.py" = ["E501"]
 
 [tool.liccheck]
+dependencies = true
+optional_dependencies = ["test"]
+
 authorized_licenses = [
     "bsd",
     "new bsd",
@@ -126,3 +134,4 @@ unauthorized_licenses = [
 [tool.liccheck.authorized_packages]
 psycopg2-binary = "*"
 typing-extensions = "*"
+
