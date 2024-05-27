@@ -68,3 +68,6 @@ tests: docker-pg-start
 	flask drop-tables
 	pip uninstall sabedoria -y
 	$(MAKE) docker-pg-stop
+
+routes:
+	flask routes
