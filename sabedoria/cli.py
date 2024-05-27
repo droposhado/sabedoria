@@ -8,13 +8,17 @@ from .models import db
 @with_appcontext
 def create_tables_command():
     """Create new tables."""
-    db.create_all()
+    db.db.create_all()
     click.echo("Create all tables.")
+
+
+
+
 
 
 @click.command("drop-tables")
 @with_appcontext
 def drop_tables_command():
     """Clear existing data."""
-    db.drop_all()
+    db.db.drop_all()
     click.echo("Drop all tables.")

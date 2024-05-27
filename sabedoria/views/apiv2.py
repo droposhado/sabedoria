@@ -59,7 +59,7 @@ def check_language(func):
 def health_method_get():
     """Simple GET return to healthcheck"""
     try:
-        models.db.session.execute(select(1))
+        models.db.db.session.execute(select(1))
         return "OK", 200
     except SQLAlchemyError:
         return "", 500

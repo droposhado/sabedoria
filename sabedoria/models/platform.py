@@ -15,7 +15,7 @@ class Platform(Base):
     @staticmethod
     def get(idn):
         """Get a liquid by id"""
-        return db.session.get(Social, idn)
+        return db.session.get(Platform, idn)
 
 
     # def serialize(self):

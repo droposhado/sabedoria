@@ -1,5 +1,3 @@
-from datetime import date
-
 from .db import Base, db
 
 

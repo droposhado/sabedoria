@@ -19,6 +19,7 @@ class ApiV2(Base):
                 "Authorization": f"Bearer {self.token}"
             }
 
-            get_empty = self.client.get(url_for("v2.social_method_get"), headers=headers)
+            get_empty = self.client.get(url_for("v2.social_method_get"),
+                                        headers=headers)
             self.assertEqual(get_empty.status_code, 200)
             self.assertEqual(get_empty.json, {})

@@ -1,5 +1,3 @@
-from datetime import date
-
 from sqlalchemy.dialects.postgresql import UUID
 
 from .db import Base, db

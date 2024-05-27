@@ -1,9 +1,11 @@
-from .db import db
-from .course import Course
-from .education import Education
-from .employer import Employer
-from .interest import Interest
-from .job import Job
-from .platform import Platform
-from .project import Project
-from .social import Social
+__all__ = [
+    "db",
+    "course",
+    "education",
+    "employer",
+    "interest",
+    "job",
+    "platform",
+    "project",
+    "social"
+]

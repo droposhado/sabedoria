@@ -23,6 +23,7 @@ class ApiV2(Base):
             }
 
             LANGS = os.getenv("LANGS", "").split(",")
-            get_empty = self.client.get(url_for("v2.language_method_get"), headers=headers)
+            get_empty = self.client.get(url_for("v2.language_method_get"),
+                                        headers=headers)
             self.assertEqual(get_empty.status_code, 200)
             self.assertEqual(get_empty.json, LANGS)
