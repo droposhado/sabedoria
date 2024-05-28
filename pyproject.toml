@@ -135,3 +135,6 @@ unauthorized_licenses = [
 psycopg2-binary = "*"
 typing-extensions = "*"
 
+# pylint skip
+pylint = "*"
+astroid = "*"
