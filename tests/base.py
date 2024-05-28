@@ -14,12 +14,12 @@ class Base(unittest.TestCase):
 
         with self.app.app_context():
 
-            sabedoria.models.db.drop_all()
-            sabedoria.models.db.create_all()
+            sabedoria.models.db.db.drop_all()
+            sabedoria.models.db.db.create_all()
 
 
     def setDown(self):
 
         with self.app.app_context():
 
-            sabedoria.models.db.drop_all()
+            sabedoria.models.db.db.drop_all()
