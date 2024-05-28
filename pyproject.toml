@@ -23,7 +23,7 @@ dependencies = [
     "psycopg2-binary",
     "gunicorn==22.0.0",
     "idna==3.4",
-    "itsdangerous==2.1.2",
+    "itsdangerous==2.2.0",
     "Jinja2==3.1.4",
     "MarkupSafe==2.1.2",
     "requests==2.31.0",
