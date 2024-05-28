@@ -21,7 +21,7 @@ dependencies = [
     "Flask-HTTPAuth==4.7.0",
     "Flask-SQLAlchemy",
     "psycopg2-binary",
-    "gunicorn==20.1.0",
+    "gunicorn==22.0.0",
     "idna==3.4",
     "itsdangerous==2.1.2",
     "Jinja2==3.1.4",
