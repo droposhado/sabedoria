@@ -1,6 +1,6 @@
 # sabedoria
 
-A project to store personal data in baserow.io tables, distribute in
+A project to store personal data in PostgreSQL, distribute in
 json format through REST API, facilitating the use in some projects.
 
 The routes are made up of scripts put together, taken from several
@@ -15,24 +15,7 @@ variable.
 specifically the `Fly-Client-Ip` header in the 
 [sabedoria/gunicorn.py](sabedoria/gunicorn.py) file
 
-**Warning**: always need `"user_field_names": True` to get field
-with string key, or you need use number field.
-
 ## How to works
-
-### Baserow models
-
-It is really necessary to create the structure described in this
-document so that sabedoria can read and generate the information,
-otherwise only information via environment variables will be
-available `socials`, everything else will break.
-
-See [models](docs/baserow-models.md)
-
-### Baserow token
-
-If your token does not have read permission on the baserow tables,
-it does not display an error, it just returns the empty sets
 
 ### env variables
 
@@ -78,32 +61,6 @@ URL to site, without schema
 SITE=example.com
 ```
 
-Token to get data from baserow
-
-```
-BASEROW_TOKEN=awesomebaserowtokengenerated
-```
-
-Base URL to Baserow instance
-
-```
-BASEROW_URL="https://localhost"
-```
-
-They represent the IDs of the tables in the baserow, they are the
-last parameter of the path
-
-- https://baserow.io/database/00000/table/999999
-
-```
-COURSE_TABLE_ID=999999
-JOB_TABLE_ID=999999
-PROJECT_TABLE_ID=999999
-EDUCATION_TABLE_ID=999999
-INTEREST_TABLE_ID=999999
-DESCRIPTION_TABLE_ID=999999
-```
-
 Automatically calculates the number of cpus based on your processor with the formula cpu_count() * 2 + 1, can be specified manually and override
 
 ```
@@ -137,13 +94,6 @@ Running with **Flask**:
 ```
 LANGS=en-US,pt-BR \
 TOKEN=aawesometoken \
-BASEROW_TOKEN=awesomebaserowtokengenerated \
-COURSE_TABLE_ID=999999 \
-JOB_TABLE_ID=999999 \
-PROJECT_TABLE_ID=999999 \
-EDUCATION_TABLE_ID=999999 \
-INTEREST_TABLE_ID=999999 \
-DESCRIPTION_TABLE_ID=999999 \
 NAME=Sabio \
 GITHUB=sabio \
 LINKEDIN=sabio \
@@ -163,7 +113,7 @@ Call to service:
 ```
 curl -H "Authorization: Bearer aawesometoken" \
      -H "Accept-Language: en-US" \
-     http://localhost:5000/v1/education
+     http://localhost:5000/v2/education
 ```
 
 ## API docs
