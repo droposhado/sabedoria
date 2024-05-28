@@ -12,10 +12,6 @@ def create_tables_command():
     click.echo("Create all tables.")
 
 
-
-
-
-
 @click.command("drop-tables")
 @with_appcontext
 def drop_tables_command():
